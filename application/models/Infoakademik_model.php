@@ -46,9 +46,13 @@
 
 		public function publish($data) {
 			$dbportal = $this->load->database('portal',TRUE);
-			// $dbportal = $this->load->database('portal',TRUE);
-			// return $dbportal->insert($this->_table, $data);
 			return $dbportal->insert($this->_table, $data);
+		}
+
+		public function updateInfo($id, $data) {
+			$dbportal = $this->load->database('portal',TRUE);
+			$dbportal->where('pmId', $id);
+			return $dbportal->update($this->_table, $data);
 		}
 
 		public function delete($id) {

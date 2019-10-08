@@ -13,6 +13,16 @@
             <?php echo $this->session->flashdata('delete'); ?>
           </div>
         <?php endif; ?>
+        <?php if ($this->session->flashdata('success')): ?>
+          <div class="alert alert-success" role="alert">
+            <?php echo $this->session->flashdata('success'); ?>
+          </div>
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('edit')): ?>
+          <div class="alert alert-success" role="alert">
+            <?php echo $this->session->flashdata('edit'); ?>
+          </div>
+        <?php endif; ?>
           <div class="table-responsive">
             <table class="table" width="100%">
               <thead class=" text-primary">

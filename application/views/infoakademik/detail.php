@@ -56,10 +56,11 @@
                   <?php echo $info->pmIsi ?>
                 </td>
               </tr>
-              <?php endforeach; ?>
             </table>
           </div>
-          <a href="<?php echo base_url('infoakademik') ?>" class="btn btn-primary pull-right">Kembali</a>
+          <a href="<?php echo base_url('infoakademik') ?>" class="btn btn-secondary pull-right">Kembali</a>
+          <a href="<?php echo base_url('infoakademik/edit/'.$info->pmId) ?>" class="btn btn-primary pull-right">Edit</a>
+          <?php endforeach; ?>
         </div>
       </div>
     </div>

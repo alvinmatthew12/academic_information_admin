@@ -46,7 +46,7 @@ class Infoakademik extends CI_Controller {
 			$post = $this->input->post();
 			$judul = $this->judul = $post["judul"];
 			$isi = $this->isi = $post["isi"];
-			$tipe = $this->isi = $post["tipe"];
+			$tipe = $this->tipe = $post["tipe"];
 
 			$data = array(
 				'pmTppmrId' => $tipe,
@@ -64,7 +64,7 @@ class Infoakademik extends CI_Controller {
 			// );
 
 	        $infoakademik->publish($data);
-	        $this->session->set_flashdata('success', 'Berhasil dipublikasi');
+	        $this->session->set_flashdata('success', 'Informasi berhasil dipublikasi');
 
 	        $isi_conv =  strip_tags($isi);
 	        str_replace("&nbsp;", " ", $isi_conv);
@@ -76,6 +76,43 @@ class Infoakademik extends CI_Controller {
 		$this->load->view('infoakademik/add');
 		$this->load->view('footer');
 
+	}
+
+	public function edit($id = null) {
+		if ($this->session->userdata('username')) {} 
+		else {
+			redirect(base_url('login'));
+		}
+		if (!isset($id)) {
+			redirect(base_url('infoakademik'));
+		}
+
+		$infoakademik = $this->infoakademik_model;
+
+		if ($this->input->post()) {
+			$post = $this->input->post();
+			$judul = $this->judul = $post["judul"];
+			$isi = $this->isi = $post["isi"];
+			$tipe = $this->tipe = $post["tipe"];
+
+			$data = array(
+				'pmTppmrId' => $tipe,
+				'pmTanggal' => date("Y/m/d"),
+				'pmJudul' => $judul,
+				'pmIsi' => $isi,
+				'pmImagePath' => '',
+				'pmImageAlt' => ''
+			);
+
+			$infoakademik->updateInfo($id, $data);
+	        $this->session->set_flashdata('edit', 'Informasi berhasil diperbaharui');
+			redirect(base_url('infoakademik'));
+		}
+
+		$data["infoakademik"] = $this->infoakademik_model->getById($id);
+		$this->load->view('header');
+		$this->load->view('infoakademik/edit', $data);
+		$this->load->view('footer');
 	}
 
 	public function save_token() {
@@ -145,7 +182,7 @@ class Infoakademik extends CI_Controller {
 		echo "<p>&nbsp;</p>";
 		echo "The Result : ".$result;
 
-        $this->session->set_flashdata('success', 'Berhasil dipublikasi');
+        $this->session->set_flashdata('success', 'Informasi berhasil dipublikasi');
 		redirect(base_url('infoakademik'));
 	}
 
@@ -158,7 +195,7 @@ class Infoakademik extends CI_Controller {
 		if (!isset($id)) show_404(); 
 
 		if ($this->infoakademik_model->delete($id)) {
-	        $this->session->set_flashdata('delete', 'Berhasil menghapus informasi');
+	        $this->session->set_flashdata('delete', 'Informasi berhasil dihapus');
 			redirect(base_url('infoakademik'));
 		}
 	}
