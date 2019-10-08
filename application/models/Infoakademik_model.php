@@ -28,6 +28,14 @@
 			return $query->result();
 		}
 
+		public function getTipe($id) {
+			$dbportal = $this->load->database('portal',TRUE);
+			$dbportal->select('tppmrNama');
+			$dbportal->from('t_tipe_pengumuman_ref');
+			$dbportal->where("tppmrId", $id);
+			return $dbportal->get();
+		}
+
 		public function getToken()
 		{
 			$dbportal = $this->load->database('portal',TRUE);

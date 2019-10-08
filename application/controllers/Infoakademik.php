@@ -66,9 +66,14 @@ class Infoakademik extends CI_Controller {
 	        $infoakademik->publish($data);
 	        $this->session->set_flashdata('success', 'Informasi berhasil dipublikasi');
 
-	        $isi_conv =  strip_tags($isi);
-	        str_replace("&nbsp;", " ", $isi_conv);
-	        $this->send_notif($judul, $isi_conv);
+	        // $isi_conv =  strip_tags($isi);
+	        // str_replace("&nbsp;", " ", $isi_conv);
+
+	        $getTipe = $infoakademik->getTipe($tipe);
+	        foreach ($getTipe->result() as $type) {
+	        	$namaTipe = $type->tppmrNama;
+	        	$this->send_notif($namaTipe, $judul);
+	        }
 
 		}
 
@@ -124,7 +129,7 @@ class Infoakademik extends CI_Controller {
 		$this->infoakademik_model->update($npm,$data);
 	}
 
-	public function send_notif($judul, $isi) {
+	public function send_notif($tipe, $judul) {
 		if ($this->session->userdata('username')) {
 			
 		} else {
@@ -146,8 +151,8 @@ class Infoakademik extends CI_Controller {
 					"to" => "/topics/students",
 					"registration_tokens" => $token,
 		            "notification" => array( 
-		              	"title" => $judul, 
-		              	"body" => $isi,
+		              	"title" => $tipe, 
+		              	"body" => $judul,
 		              	"icon" => "drawable-xhdpi-icon.png",
 					    "sound" => "default",
 					    "click_action" => "FCM_PLUGIN_ACTIVITY"

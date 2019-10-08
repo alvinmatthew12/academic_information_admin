@@ -32,12 +32,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <h2 class="card-title text-center">Login</h2>
               </div>
               <div class="card-body">
-                <?php if ($this->session->flashdata('failed_login')): ?>
+                <?php if ($this->session->flashdata('result_login')): ?>
                   <div class="alert alert-danger" role="alert">
-                    <?php echo $this->session->flashdata('failed_login'); ?>
+                    <?php echo $this->session->flashdata('result_login'); ?>
                   </div>
                 <?php endif; ?>
-                <form action="<?php echo base_url('login/process');?>" method="POST">
+                <form action="<?php echo base_url('login/proses');?>" method="POST">
                   <div class="row">
                     <div class="col-md-10 ml-auto mr-auto mt-3">
                       <div class="form-group">

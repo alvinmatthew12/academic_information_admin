@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="col-md-12">
                   <div class="form-group">
                     <label class="bmd-label-floating">Judul</label>
-                    <input type="text" class="form-control" name="judul">
+                    <input type="text" class="form-control" name="judul" required>
                   </div>
                 </div>
               </div>
@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Tipe</label>
-                    <select class="form-control btn btn-link" name="tipe">
+                    <select class="form-control btn btn-link" name="tipe" required>
                       <option value="" disabled selected>-- Pilih Tipe Informasi --</option>
                       <option value="1">Informasi Akademik</option>
                       <option value="2">Kegiatan Mahasiswa</option>
