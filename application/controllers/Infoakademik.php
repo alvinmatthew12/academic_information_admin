@@ -64,6 +64,7 @@ class Infoakademik extends CI_Controller {
 			// );
 
 	        $infoakademik->publish($data);
+	        
 	        $this->session->set_flashdata('success', 'Informasi berhasil dipublikasi');
 
 	        // $isi_conv =  strip_tags($isi);
@@ -102,7 +103,6 @@ class Infoakademik extends CI_Controller {
 
 			$data = array(
 				'pmTppmrId' => $tipe,
-				'pmTanggal' => date("Y/m/d"),
 				'pmJudul' => $judul,
 				'pmIsi' => $isi,
 				'pmImagePath' => '',

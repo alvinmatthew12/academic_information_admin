@@ -57,7 +57,18 @@
 			$dbportal->insert($this->_table, $data);
 			$insert_id = $dbportal->insert_id();
 			$data1 = array('tjpmThakrid' => 1,'tjpmlPmId' => $insert_id);
-			return $dbportal->insert("t_tujuan_pengumuman_link", $data1);
+
+			$data2 = array (
+						array('fpmlFakId' => 1,'fpmlPmId' => $insert_id),
+						array('fpmlFakId' => 2,'fpmlPmId' => $insert_id),
+						array('fpmlFakId' => 3,'fpmlPmId' => $insert_id),
+						array('fpmlFakId' => 4,'fpmlPmId' => $insert_id),
+						array('fpmlFakId' => 5,'fpmlPmId' => $insert_id),
+						array('fpmlFakId' => 6,'fpmlPmId' => $insert_id)
+				);
+
+			$dbportal->insert("t_tujuan_pengumuman_link", $data1);
+			return $dbportal->insert_batch("t_fakultas_pengumuman_link", $data2);
 		}
 
 		public function updateInfo($id, $data) {
