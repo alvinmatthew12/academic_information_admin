@@ -54,7 +54,10 @@
 
 		public function publish($data) {
 			$dbportal = $this->load->database('portal',TRUE);
-			return $dbportal->insert($this->_table, $data);
+			$dbportal->insert($this->_table, $data);
+			$insert_id = $dbportal->insert_id();
+			$data1 = array('tjpmThakrid' => 1,'tjpmlPmId' => $insert_id);
+			return $dbportal->insert("t_tujuan_pengumuman_link", $data1);
 		}
 
 		public function updateInfo($id, $data) {
