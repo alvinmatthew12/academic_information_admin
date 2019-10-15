@@ -245,12 +245,21 @@
 
   <script>
     $(document).ready(function() {
+
       tinymce.init({
         selector: '#isi',
         plugins : 'advlist autolink link lists charmap print preview'
       });
     });
 
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#myTable').DataTable({
+        "order": [[ 0, "desc" ]]
+      });
+    });
   </script>
 
 </body>

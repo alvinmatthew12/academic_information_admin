@@ -24,7 +24,7 @@
           </div>
         <?php endif; ?>
           <div class="table-responsive">
-            <table class="table" width="100%">
+            <table class="table" id="myTable" width="100%">
               <thead class=" text-primary">
                 <th width="5%">
                   ID
